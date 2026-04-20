@@ -1,21 +1,21 @@
 {
-    "name": "Selenite",
-    "short_name": "Selenite",
+    "name": "Talon",
+    "short_name": "Talon",
     "start_url": "index.html",
     "scope": "./",
     "icons": [
       {
-        "src": "img/selenite192.png",
+        "src": "img/talon192.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "img/selenite.png",
+        "src": "img/talon.png",
         "sizes": "512x512",
         "type": "image/png"
       }
     ],
     "theme_color": "#ffffff",
-    "background_color": "#10002b",
+    "background_color": "#2f1b0f",
     "display": "standalone"
   }

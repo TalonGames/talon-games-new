@@ -1,16 +1,16 @@
 :root {
-     --inputbg: #3c096c;
-    --inputborder: #5a189a;
-    --uibg: #240046;
+     --inputbg: #8c5a2b;
+    --inputborder: #b87333;
+    --uibg: #5c3b1e;
     --textcolor: #fff;
-    --bg: #10002b;
+    --bg: #2f1b0f;
 }
 body {
- --inputbg: #3c096c;
-    --inputborder: #5a189a;
-    --uibg: #240046;
+ --inputbg: #8c5a2b;
+    --inputborder: #b87333;
+    --uibg: #5c3b1e;
     --textcolor: #fff;
-    --bg: #10002b;
+    --bg: #2f1b0f;
 }
 body[theme=threekho] {
  --inputbg: #28A018;
@@ -35,25 +35,25 @@ body[theme=dogcat] {
   /* https://wallpaperaccess.com/full/115544.jpg */
 }
 body[theme=custom] {
-    --inputbg: #3c096c;
-    --inputborder: #5a189a;
-    --uibg: #240046;
+    --inputbg: #8c5a2b;
+    --inputborder: #b87333;
+    --uibg: #5c3b1e;
     --textcolor: #fff;
-    --bg: #10002b;
+    --bg: #2f1b0f;
 }
 body[theme=mainnew] {
-    --inputbg: #3c096c;
-    --inputborder: #5a189a;
-    --uibg: #240046bb;
+    --inputbg: #8c5a2b;
+    --inputborder: #b87333;
+    --uibg: #5c3b1ebb;
     --textcolor: #fff;
     --bg: linear-gradient(0deg, rgba(36,0,70,1) 0%, rgba(60,9,108,1) 50%, rgba(36,0,70,1) 100%);
 }
 body[theme=main] {
-    --inputbg: #3c096c;
-    --inputborder: #5a189a;
-    --uibg: #240046bb;
+    --inputbg: #8c5a2b;
+    --inputborder: #b87333;
+    --uibg: #5c3b1ebb;
     --textcolor: #fff;
-    --bg: #10002b;
+    --bg: #2f1b0f;
 }
 body[theme=light] {
     --inputbg: #bbbbbb;

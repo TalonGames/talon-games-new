@@ -2,10 +2,10 @@
 <html class="sl-theme-dark" lang="en">
 	<head>
 		<!-- initialize theme vars
-    https://coolors.co/10002b-240046-3c096c-5a189a-7b2cbf-9d4edd-c77dff-e0aaff -->
+    "coolors.co/10002b-240046-3c096c-5a189a-7b2cbf-9d4edd-c77dff-e0aaff -->
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-		<script src=" https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
+		<script src=" "cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 		<!-- initialize my stuff -->
 		<script src="/js/all.min.js"></script>
@@ -21,7 +21,7 @@
 		
 
 		<!-- seo + other things -->
-		<title>Apps | Selenite</title>
+		<title>Apps | Talon</title>
 		<link rel="icon" href="/favicon.ico" />
 
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -34,9 +34,9 @@
 		<div id="toast"></div>
 		<script>
 			$.getJSON("data/changelog.json", (data) => {
-				if (localStorage.getItem("selenite.version") != data.version) {
+				if (localStorage.getItem("talon.version") != data.version) {
 					toast({ title: "New Update!", message: data.desc, time: data.timestamp });
-					localStorage.setItem("selenite.version", data.version);
+					localStorage.setItem("talon.version", data.version);
 				}
 			});
 			function toast(message, type) {
@@ -110,8 +110,8 @@
 		</main>
 
 		<footer>
-			<a href="https://gitlab.com/skysthelimit.dev/selenite">Source</a>
-			<a href="https://discord.gg/7jyufnwJNf">Discord</a>
+			<a href="https://github.com/TalonGames/talon-games-new">Source</a>
+			<a href="https://discord.gg/GHX5JDJbVs">Discord</a>
 			<a href="/suggest.html">Suggestions & Bugs</a>
 			<a href="/contact.html">Contact</a>
 			<a href="/support.html">Donate</a>
@@ -122,7 +122,7 @@
 				const adContainers = document.querySelectorAll("[id=adcontainer]");
 				if (adContainers.length > 0) {
 					for (let i = 0; i < adContainers.length; i++) {
-						if (Math.random() < 0.5 && localStorage.getItem("selenite.adblock") != "true") {
+						if (Math.random() < 0.5 && localStorage.getItem("talon.adblock") != "true") {
 							adContainers[i].innerHTML = "";
 						}
 					}

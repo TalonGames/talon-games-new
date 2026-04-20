@@ -51,5 +51,5 @@ app.get('/backgrounds', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Selenite is running on port ${port}`);
+  console.log(`Talon is running on port ${port}`);
 });
