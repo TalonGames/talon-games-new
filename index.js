@@ -1,54 +1,56 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
+const root = __dirname;
 const port = process.env.PORT || 3000;
 
+function safePathFromRequest(requestPath) {
+  const normalized = path.normalize(requestPath).replace(/^\.+/, '');
+  const resolved = path.join(root, normalized);
+  return resolved.startsWith(root) ? resolved : null;
+}
 
-app.use(express.static(__dirname));
+function sendExistingFile(req, res) {
+  const requestPath = decodeURIComponent(req.path);
+  let filePath = safePathFromRequest(requestPath);
 
-app.get('/projects', (req, res) => {
-  res.sendFile(path.join(__dirname, 'projects.html'));
-});
+  if (!filePath) {
+    res.status(400).send('Bad request');
+    return;
+  }
 
-app.get('/bookmarklets', (req, res) => {
-  res.sendFile(path.join(__dirname, 'bookmarklets.html'));
-});
+  if (requestPath === '/' || requestPath === '') {
+    res.sendFile(path.join(root, 'index.html'));
+    return;
+  }
 
-app.get('/settings', (req, res) => {
-  res.sendFile(path.join(__dirname, 'settings.html'));
-});
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+    const indexFile = path.join(filePath, 'index.html');
+    if (fs.existsSync(indexFile)) {
+      res.sendFile(indexFile);
+      return;
+    }
+  }
 
-app.get('/support', (req, res) => {
-  res.sendFile(path.join(__dirname, 'support.html'));
-});
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+    res.sendFile(filePath);
+    return;
+  }
 
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'about.html'));
-});
+  if (!path.extname(filePath)) {
+    const htmlFile = `${filePath}.html`;
+    if (fs.existsSync(htmlFile) && fs.statSync(htmlFile).isFile()) {
+      res.sendFile(htmlFile);
+      return;
+    }
+  }
 
-app.get('/transfer', (req, res) => {
-  res.sendFile(path.join(__dirname, 'transfer.html'));
-});
+  res.status(404).sendFile(path.join(root, '404.html'));
+}
 
-app.get('/suggest', (req, res) => {
-  res.sendFile(path.join(__dirname, 'suggest.html'));
-});
-
-app.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname, 'contact.html'));
-});
-
-app.get('/ad', (req, res) => {
-  res.sendFile(path.join(__dirname, 'ad.html'));
-});
-
-app.get('/blank', (req, res) => {
-  res.sendFile(path.join(__dirname, 'blank.html'));
-});
-app.get('/backgrounds', (req, res) => {
-  res.sendFile(path.join(__dirname, 'backgrounds.html'));
-});
+app.get('*', sendExistingFile);
 
 app.listen(port, () => {
   console.log(`Talon is running on port ${port}`);
